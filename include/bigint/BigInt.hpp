@@ -5,14 +5,20 @@
 #include <iostream>
 
 namespace bigint {
+    
+    static const uint32_t BASE = 1e9;
+    static const int BASE_DIGITS = 9;
     class BigInt {
         private:
             std::vector<uint32_t> num;      // little endian
             bool neg_sign;
 
         public:
-            BigInt();
+            // constructors
+            BigInt();       
             BigInt(const std::string& s);
+
+            // Destructors
             ~BigInt();
             
             // Copy
@@ -35,8 +41,8 @@ namespace bigint {
             BigInt operator%(const BigInt& other) const;
             BigInt operator-() const;    // negate
             
-            // TODO: Compound operators
             BigInt& operator+=(const BigInt& other);
+            // TODO: Compound operators
             BigInt& operator-=(const BigInt& other);
             BigInt& operator*=(const BigInt& other);
             BigInt& operator/=(const BigInt& other);
@@ -50,9 +56,26 @@ namespace bigint {
             bool operator>(const BigInt& other) const;
             bool operator>=(const BigInt& other) const;
             
-            // TODO: Logical operators: &&, ||, !
-            // TODO: Bitwise operators: &, |, ^, ~, <<, >>
-            
+            // Logical operators: &&, ||, !
+            bool operator&&(const BigInt& other) const;
+            bool operator||(const BigInt& other) const;
+            bool operator!() const;
+
+            // Bitwise operators: &, |, ^, ~, <<, >>
+            BigInt operator&(const BigInt& other) const;
+            BigInt operator|(const BigInt& other) const;
+            BigInt operator^(const BigInt& other) const;
+            BigInt operator~() const;
+
+            // value returning
+            BigInt operator<<(size_t shift) const;
+            BigInt operator>>(size_t shift) const;
+
+            // TODO: in place
+            BigInt& operator<<=(size_t shift);
+            BigInt& operator>>=(size_t shift);
+
+
             // io
             friend std::ostream& operator<<(std::ostream& os, const BigInt& num);
             // TODO: >> input operator

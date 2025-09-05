@@ -20,11 +20,11 @@ void test_addition_with_carry() {
 }
 
 void test_negative_addition() {
-    bigint::BigInt a("-123");
+    bigint::BigInt a("-123456789");
     bigint::BigInt b("100");
 
     bigint::BigInt c = a + b;
-    assert(c.toString() == "-23");
+    assert(c.toString() == "-123456689");
 }
 
 void test_addition_to_zero() {

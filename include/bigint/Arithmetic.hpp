@@ -16,4 +16,7 @@ namespace bigint::arithmetic {
         BigInt& compound_divide(BigInt& a, const BigInt& b);
         BigInt& compound_mod(BigInt& a, const BigInt& b);
 
+        BigInt multiply_karatsuba(const BigInt&a, const BigInt &b);
+        BigInt mulitply_fft(const BigInt&a, const BigInt &b);
+
 }   // namespace bigint::arithmetic

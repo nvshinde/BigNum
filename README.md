@@ -32,3 +32,7 @@ int main() {
 
 ```
 
+# TODO:
+1. Inplace ops in bigint
+2. Compound ops for bigfloat
+
